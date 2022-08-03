@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "description": "[![Actions Status](https://github.com/nomadkyr/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/nomadkyr/frontend-project-lvl2/actions)",
-  "main": "index.js",
+  "main": "/bin/gendiff.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -27,6 +27,7 @@
     "eslint-plugin-import": "^2.26.0",
     "fs": "^0.0.1-security",
     "lodash": "^4.17.21",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "url": "^0.11.0"
   }
 }

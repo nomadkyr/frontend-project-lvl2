@@ -1,4 +1,7 @@
-install:
+install: install-deps
+	npx simple-git-hooks
+
+install-deps:
 	npm ci
 
 lint:
@@ -10,6 +13,12 @@ test:
 publish:
 	npm publish --dry-run
 	npm link
+	
+test-coverage: # 
+	npm test -- --coverage --coverageProvider=v8
+
+test-watch: # 
+	npm test -- --watchAll
 
 gendiff: 
 node bin/gendiff.js

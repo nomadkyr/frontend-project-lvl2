@@ -17,14 +17,14 @@ const genDiff = (filepath1, filepath2) => {
   const newArray = [];
   sortedKeys.map((key) => {
     if (!Object.hasOwn(file1, key)) {
-      newArray.push(` + ${key} : ${file2[key]}`);
+      newArray.push(`  + ${key}: ${file2[key]}`);
     } else if (!Object.hasOwn(file2, key)) {
-      newArray.push(` - ${key} : ${file1[key]}`);
+      newArray.push(`  - ${key}: ${file1[key]}`);
     } else if (file1[key] !== file2[key]) {
-      newArray.push(` - ${key} : ${file1[key]}`);
-      newArray.push(` + ${key} : ${file2[key]}`);
+      newArray.push(`  - ${key}: ${file1[key]}`);
+      newArray.push(`  + ${key}: ${file2[key]}`);
     } else {
-      newArray.push(`   ${key} : ${file1[key]}`);
+      newArray.push(`    ${key}: ${file1[key]}`);
     }
     return null;
   });

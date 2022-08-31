@@ -1,6 +1,12 @@
 install:
 	npm install
 
+lint:
+	npx eslint .
+
+test: 
+	npm test
+
 publish:
 	npm publish --dry-run
 	npm link

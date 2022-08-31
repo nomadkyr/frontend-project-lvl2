@@ -44,4 +44,3 @@ jobs:
           CC_TEST_REPORTER_ID : ${{ secrets.CODECLIMATE_ID }}
         with:
           coverageCommand: make test-coverage
-Footer

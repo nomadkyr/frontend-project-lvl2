@@ -21,4 +21,4 @@ test-watch: #
 	npm test -- --watchAll
 
 gendiff: 
-node bin/gendiff.js
+	node bin/gendiff.js

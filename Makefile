@@ -14,10 +14,10 @@ publish:
 	npm publish --dry-run
 	npm link
 	
-test-coverage: # 
+test-coverage: 
 	npm test -- --coverage --coverageProvider=v8
 
-test-watch: # 
+test-watch: 
 	npm test -- --watchAll
 
 gendiff: 

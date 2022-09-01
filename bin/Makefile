@@ -5,7 +5,7 @@ lint:
 	npx eslint .
 
 test: 
-	npm test
+	npx jest
 
 publish:
 	npm publish --dry-run

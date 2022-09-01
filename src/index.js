@@ -1,4 +1,5 @@
 import _ from 'lodash';
+import path from 'path';
 import readFile from './readFile.js';
 import parse from './parse.js';
 
@@ -6,8 +7,8 @@ const genDiff = (filepath1, filepath2) => {
   const readfile1 = readFile(filepath1);
   const readfile2 = readFile(filepath2);
 
-  const file1 = parse(readfile1);
-  const file2 = parse(readfile2);
+  const file1 = parse(readfile1, path.extname(filepath1));
+  const file2 = parse(readfile2, path.extname(filepath2));
 
   const keys1 = Object.keys(file1);
   const keys2 = Object.keys(file2);

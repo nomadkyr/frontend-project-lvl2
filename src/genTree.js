@@ -13,7 +13,7 @@ const genTree = (file1, file2) => {
       return {
         key,
         type: 'nested',
-        children: genTree(value1, value2)
+        children: genTree(value1, value2),
       };
     }
     if (!_.has(file2, key)) {
@@ -35,13 +35,13 @@ const genTree = (file1, file2) => {
         key,
         type: 'changed',
         removedValue: value1,
-        addedValue: value2
+        addedValue: value2,
       };
     }
     return {
       key,
       type: 'unchanged',
-      value: value1
+      value: value1,
     };
   });
 

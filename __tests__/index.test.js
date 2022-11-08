@@ -3,6 +3,7 @@ import readFile from '../src/readFile.js';
 import genDiff from '../src/index.js';
 
 const expectedOutput = readFile('output.txt');
+const plainExpectedOutput = readFile('plain_output.txt');
 
 test('json test', () => {
   expect(genDiff('file1.json', 'file2.json')).toEqual(expectedOutput);
@@ -10,4 +11,8 @@ test('json test', () => {
 
 test('yaml test', () => {
   expect(genDiff('file1.yml', 'file2.yaml')).toEqual(expectedOutput);
+});
+
+test('plainFormat test', () => {
+  expect(genDiff('file1.json', 'file2.json')).toEqual(plainExpectedOutput);
 });

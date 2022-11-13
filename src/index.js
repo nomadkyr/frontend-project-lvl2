@@ -4,7 +4,7 @@ import parse from './parse.js';
 import genTree from './genTree.js';
 import format from './formatters/index.js';
 
-const genDiff = (filepath1, filepath2, formatName) => {
+const genDiff = (filepath1, filepath2, formatterName) => {
   const readfile1 = readFile(filepath1);
   const readfile2 = readFile(filepath2);
 
@@ -12,7 +12,7 @@ const genDiff = (filepath1, filepath2, formatName) => {
   const file2 = parse(readfile2, path.extname(filepath2));
 
   const tree = genTree(file1, file2);
-  return format(tree, formatName);
+  return format(tree, formatterName);
 };
 
 export default genDiff;

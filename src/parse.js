@@ -1,7 +1,7 @@
 import { load } from 'js-yaml';
 
-const parse = (data, format) => {
-  switch (format) {
+const parse = (data, formatName) => {
+  switch (formatName) {
     case '.json':
       return JSON.parse(data);
     case '.yml':

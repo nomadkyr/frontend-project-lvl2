@@ -1,4 +1,3 @@
-import _ from 'lodash';
 import path from 'path';
 import readFile from './readFile.js';
 import parse from './parse.js';

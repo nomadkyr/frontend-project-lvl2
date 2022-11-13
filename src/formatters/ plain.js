@@ -18,10 +18,10 @@ const plain = (diff) => {
             return iter(node.children, `${fullName}`);
           }
           case 'added': {
-            return `Property '${fullName}' was added with value ${stringify(node.value)}`;
+            return `Property '${fullName}' was removed`;
           }
           case 'deleted': {
-            return `Property '${fullName}' was removed`;
+            return `Property '${fullName}' was added with value: ${stringify(node.value)}`;
           }
           case 'changed': {
             return `Property '${fullName}' was updated. From ${stringify(node.removedValue)} to ${stringify(node.addedValue)}`;

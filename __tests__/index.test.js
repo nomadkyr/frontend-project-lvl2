@@ -2,22 +2,30 @@ import { expect, test } from '@jest/globals';
 import readFile from '../src/readFile.js';
 import genDiff from '../src/index.js';
 
-const expectedOutput = readFile('output.txt');
 const plainExpectedOutput = readFile('plain_output.txt');
 const jsonExpectedOutput = readFile('json_output.txt');
+const stylishExpectedOutput = readFile('stylish_output.txt');
 
-test('json test', () => {
-  expect(genDiff('file1.json', 'file2.json')).toEqual(expectedOutput);
+test('plainFormat test1', () => {
+  expect(genDiff('file1.json', 'file2.json', 'plain')).toEqual(plainExpectedOutput);
 });
 
-test('yaml test', () => {
-  expect(genDiff('file1.yml', 'file2.yaml')).toEqual(expectedOutput);
+test('plainFormat test2', () => {
+  expect(genDiff('file1.yaml', 'file2.yaml', 'plain')).toEqual(plainExpectedOutput);
 });
 
-test('plainFormat test', () => {
-  expect(genDiff('file1.json', 'file2.json')).toEqual(plainExpectedOutput);
+test('stylishFormat test1', () => {
+  expect(genDiff('file1.json', 'file2.json', 'stylish')).toEqual(stylishExpectedOutput);
 });
 
-test('jsonFormat test', () => {
-  expect(genDiff('file1.json, file2.json')).toEqual(jsonExpectedOutput);
+test('stylishFormat test2', () => {
+  expect(genDiff('file1.yaml', 'file2.yaml', 'stylish')).toEqual(stylishExpectedOutput);
+});
+
+test('jsonFormat test1', () => {
+  expect(genDiff('file1.json', 'file2.json', 'json')).toEqual(jsonExpectedOutput);
+});
+
+test('jsonFormat test2', () => {
+  expect(genDiff('file1.yaml', 'file2.yaml', 'json')).toEqual(jsonExpectedOutput);
 });

@@ -11,7 +11,7 @@ test('plainFormat test1', () => {
 });
 
 test('plainFormat test2', () => {
-  expect(genDiff('file1.yaml', 'file2.yaml', 'plain')).toEqual(plainExpectedOutput);
+  expect(genDiff('file1.yml', 'file2.yaml', 'plain')).toEqual(plainExpectedOutput);
 });
 
 test('stylishFormat test1', () => {
@@ -19,7 +19,7 @@ test('stylishFormat test1', () => {
 });
 
 test('stylishFormat test2', () => {
-  expect(genDiff('file1.yaml', 'file2.yaml', 'stylish')).toEqual(stylishExpectedOutput);
+  expect(genDiff('file1.yml', 'file2.yaml', 'stylish')).toEqual(stylishExpectedOutput);
 });
 
 test('jsonFormat test1', () => {
@@ -27,5 +27,5 @@ test('jsonFormat test1', () => {
 });
 
 test('jsonFormat test2', () => {
-  expect(genDiff('file1.yaml', 'file2.yaml', 'json')).toEqual(jsonExpectedOutput);
+  expect(genDiff('file1.yml', 'file2.yaml', 'json')).toEqual(jsonExpectedOutput);
 });

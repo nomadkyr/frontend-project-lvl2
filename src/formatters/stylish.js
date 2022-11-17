@@ -16,34 +16,28 @@ const stringify = (node, depth = 1) => {
   ].join('\n');
 };
 
-const makeTree = (nodes) => {
-  const iter = (node, depth = 1) => {
-    const {
-      key, type, value, children, removedValue, addedValue,
-    } = node;
-    switch (type) {
-      case 'nested': {
-        return `\n${indent(depth)}  ${key}: {${children.map((child) => iter(child, depth + 1)).join('')}\n${indent(depth)}  }`;
-      }
-      case 'added': {
-        return `\n${indent(depth)}- ${key}: ${stringify(value, depth + 1)}`;
-      }
-      case 'deleted': {
-        return `\n${indent(depth)}+ ${key}: ${stringify(value, depth + 1)}`;
-      }
-      case 'unchanged': {
-        return `\n${indent(depth)}  ${key}: ${stringify(value, depth + 1)}`;
-      }
-      case 'changed': {
-        const removed = `\n${indent(depth)}- ${key}: ${stringify(removedValue, depth + 1)}`;
-        const added = `\n${indent(depth)}+ ${key}: ${stringify(addedValue, depth + 1)}`;
-        return `${removed}${added}`;
-      }
-      default:
-        return null;
+const makeTree = (node, depth = 1) => {
+  switch (node.type) {
+    case 'nested': {
+      return `\n${indent(depth)}  ${node.key}: {${node.children.map((child) => makeTree(child, depth + 1)).join('')}\n${indent(depth)}  }`;
     }
-  };
-  return iter(nodes);
+    case 'added': {
+      return `\n${indent(depth)}- ${node.key}: ${stringify(node.value, depth + 1)}`;
+    }
+    case 'deleted': {
+      return `\n${indent(depth)}+ ${node.key}: ${stringify(node.value, depth + 1)}`;
+    }
+    case 'unchanged': {
+      return `\n${indent(depth)}  ${node.key}: ${stringify(node.value, depth + 1)}`;
+    }
+    case 'changed': {
+      const removed = `\n${indent(depth)}- ${node.key}: ${stringify(node.removedValue, depth + 1)}`;
+      const added = `\n${indent(depth)}+ ${node.key}: ${stringify(node.addedValue, depth + 1)}`;
+      return `${removed}${added}`;
+    }
+    default:
+      return null;
+  }
 };
 
 const stylish = (tree) => {

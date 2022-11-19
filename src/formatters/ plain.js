@@ -7,30 +7,33 @@ const stringify = (value) => {
   return _.isString(value) ? `'${value}'` : value;
 };
 
-const plain = (diff, ancestry = '') => {
-  const lines = diff.map((node) => {
-    const fullName = `${ancestry}${node.key}`;
+const fullName = (ancestry, node) => {
+  const name = `${ancestry}${node.key}`;
+  return name;
+};
 
-    switch (node.type) {
-      case 'nested': {
-        return plain(node.children, `${fullName}.`);
-      }
-      case 'added': {
-        return `Property '${fullName}' was removed`;
-      }
-      case 'deleted': {
-        return `Property '${fullName}' was added with value: ${stringify(node.value)}`;
-      }
-      case 'changed': {
-        return `Property '${fullName}' was updated. From ${stringify(node.removedValue)} to ${stringify(node.addedValue)}`;
-      }
-      default:
-        return null;
+const makeLines = (node, ancestry = '') => {
+  switch (node.type) {
+    case 'nested': {
+      return node.children.map((child) => makeLines(child, `${fullName(ancestry, node)}.`));
     }
-  });
-  return [...lines]
-    .filter(Boolean)
-    .join('\n');
+    case 'added': {
+      return `Property '${fullName(ancestry, node)}' was removed`;
+    }
+    case 'deleted': {
+      return `Property '${fullName(ancestry, node)}' was added with value: ${stringify(node.value)}`;
+    }
+    case 'changed': {
+      return `Property '${fullName(ancestry, node)}' was updated. From ${stringify(node.removedValue)} to ${stringify(node.addedValue)}`;
+    }
+    default:
+      return null;
+  }
+};
+
+const plain = (diff) => {
+  const result = diff.map((node) => makeLines(node));
+  return result.flat(Infinity).filter(Boolean).join('\n');
 };
 
 export default plain;

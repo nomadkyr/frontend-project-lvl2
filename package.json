@@ -2,8 +2,7 @@
   "name": "@hexlet/code",
   "type": "module",
   "version": "1.0.0",
-  "description": "[![Actions Status](https://github.com/nomadkyr/frontend-project-lvl2/workflows/hexlet-check/badge.svg)](https://github.com/nomadkyr/frontend-project-lvl2/actions)",
-  "main": "src/index.js",
+  "description": "Hexlet project (level 2) - the program showing difference between two files",
   "bin": {
     "gendiff": "bin/gendiff.js"
   },

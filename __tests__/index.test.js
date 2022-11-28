@@ -29,3 +29,11 @@ test('jsonFormat test1', () => {
 test('jsonFormat test2', () => {
   expect(genDiff('file1.yml', 'file2.yaml', 'json')).toEqual(jsonExpectedOutput);
 });
+
+test('default option', () => {
+  expect(genDiff('file1.json', 'file2.json')).toEqual(stylishExpectedOutput);
+});
+
+test('default option2', () => {
+  expect(genDiff('file1.yml', 'file2.yaml')).toEqual(stylishExpectedOutput);
+});

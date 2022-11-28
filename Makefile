@@ -11,8 +11,7 @@ test:
 	npx jest
 
 publish:
-	npm publish --dry-run
-	npm link
+	npm publish --dry-run	
 	
 test-coverage: 
 	npm test -- --coverage --coverageProvider=v8
